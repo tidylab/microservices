@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tidylab.github.io/microservices//index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//reference/add_plumber_service.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//reference/microservices-package.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//reference/use_plumber_microservice.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/articles/01-introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/articles/02-plumber.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/articles/microservices.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/details/add_plumber_service.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/details/use_plumber_microservice.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/microservices//articles/excerpts/setup-rudimentary-microservice.html</loc>
+  </url>
+</urlset>
