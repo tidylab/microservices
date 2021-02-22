@@ -1,0 +1,15 @@
+structure(list(url = "http://127.0.0.1:8080/route_name/read_table?name=xxx", 
+    status_code = 400L, headers = structure(list(date = "Sat, 13 Feb 2021 04:14:51 GMT", 
+        `content-type` = "application/json", `content-length` = "1349"), class = c("insensitive", 
+    "list")), all_headers = list(list(status = 400L, version = "HTTP/1.1", 
+        headers = structure(list(date = "Sat, 13 Feb 2021 04:14:51 GMT", 
+            `content-type` = "application/json", `content-length` = "1349"), class = c("insensitive", 
+        "list")))), cookies = structure(list(domain = logical(0), 
+        flag = logical(0), path = logical(0), secure = logical(0), 
+        expiration = structure(numeric(0), class = c("POSIXct", 
+        "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
+    content = charToRaw("{\"error\":\"'arg' should be one of \\\"ability.cov\\\", \\\"airmiles\\\", \\\"AirPassengers\\\", \\\"airquality\\\", \\\"anscombe\\\", \\\"attenu\\\", \\\"attitude\\\", \\\"austres\\\", \\\"BJsales\\\", \\\"BJsales.lead\\\", \\\"BOD\\\", \\\"cars\\\", \\\"ChickWeight\\\", \\\"chickwts\\\", \\\"co2\\\", \\\"CO2\\\", \\\"crimtab\\\", \\\"discoveries\\\", \\\"DNase\\\", \\\"esoph\\\", \\\"euro\\\", \\\"euro.cross\\\", \\\"eurodist\\\", \\\"EuStockMarkets\\\", \\\"faithful\\\", \\\"Formaldehyde\\\", \\\"freeny\\\", \\\"freeny.x\\\", \\\"freeny.y\\\", \\\"HairEyeColor\\\", \\\"Harman23.cor\\\", \\\"Harman74.cor\\\", \\\"Indometh\\\", \\\"infert\\\", \\\"InsectSprays\\\", \\\"iris\\\", \\\"iris3\\\", \\\"islands\\\", \\\"JohnsonJohnson\\\", \\\"LakeHuron\\\", \\\"lh\\\", \\\"LifeCycleSavings\\\", \\\"Loblolly\\\", \\\"longley\\\", \\\"lynx\\\", \\\"morley\\\", \\\"mtcars\\\", \\\"nhtemp\\\", \\\"Nile\\\", \\\"nottem\\\", \\\"npk\\\", \\\"occupationalStatus\\\", \\\"Orange\\\", \\\"OrchardSprays\\\", \\\"PlantGrowth\\\", \\\"precip\\\", \\\"presidents\\\", \\\"pressure\\\", \\\"Puromycin\\\", \\\"quakes\\\", \\\"randu\\\", \\\"rivers\\\", \\\"rock\\\", \\\"Seatbelts\\\", \\\"sleep\\\", \\\"stack.loss\\\", \\\"stack.x\\\", \\\"stackloss\\\", \\\"sunspot.month\\\", \\\"sunspot.year\\\", \\\"sunspots\\\", \\\"swiss\\\", \\\"Theoph\\\", \\\"Titanic\\\", \\\"ToothGrowth\\\", \\\"treering\\\", \\\"trees\\\", \\\"UCBAdmissions\\\", \\\"UKDriverDeaths\\\", \\\"UKgas\\\", \\\"USAccDeaths\\\", \\\"USArrests\\\", \\\"UScitiesD\\\", \\\"USJudgeRatings\\\", \\\"USPersonalExpenditure\\\", \\\"uspop\\\", \\\"VADeaths\\\", \\\"volcano\\\", \\\"warpbreaks\\\", \\\"women\\\", \\\"WorldPhones\\\", \\\"WWWusage\\\"\"}"), 
+    date = structure(1613189691, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 4.5e-05, 
+    connect = 4.6e-05, pretransfer = 0.000121, starttransfer = 0.004061, 
+    total = 0.004076)), class = "response")

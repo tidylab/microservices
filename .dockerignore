@@ -1,0 +1,15 @@
+# Folders
+.*/
+cache/
+inst/docs/
+man/
+vignettes/_cache/
+
+# Files
+.*
+!.Rbuildignore
+^docker-compose.yml$
+
+# Demo
+./R/demo-*
+./tests/testthat/test-demo-*

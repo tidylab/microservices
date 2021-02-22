@@ -1,0 +1,111 @@
+---
+title: "Wrinting a Microservice in R"
+bibliography: []
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+## Why should I use Microservices?
+
+## What is the nature of R Applications?
+
+* Most applications are used by a small amount of users, if any
+* Most applications are seldom used concurrently
+
+## Why should I use a Microservices with R applications?
+
+A microservice is a piece of business functionality with clear interfaces.
+Implementing an Microservice around an R application, allows its integration to
+platforms such as Android applications, Python applications, and commercial
+off-the-shelf products (COTS) products. This is because, a typical
+microservice is a process that communicate over a network throughout HTTP
+requests. The caller, whether it is a Website, Android application or even
+another R application, is neither aware nor care about the programming language
+that powers the service.
+
+```{r error=TRUE}
+stop("Adding a Microservice increases complexity. You must have good reasons to do so.")
+```
+
+```{r message=TRUE}
+# https://medium.com/swlh/stop-this-microservices-madness-8e4e0695805b
+message("
+Good reasons to add a Microservice:
+
+1. Scalability for non-uniform traffic
+2. Error resilience
+3. Separate deployments
+4. Complete isolation
+5. Different requirements
+")
+```
+
+
+## Microsrvice as an R package
+
+We can write a microservice as an [R
+extension](https://cran.r-project.org/doc/manuals/r-release/R-exts.html),
+specifically in a pseudo-package manner. In this mode, we take advantage of
+well-documented practice and mature toolkit designated to develop R packages. To
+be clear, our microservice is not an R package, rather it is built as an R
+package. Writing a microservice as an R package means:
+
+1.  We use the standard R package folder structure as a cookie cutter;
+2.  We develop (write, document and test) the microservice functionally as they
+    were functions of an R package.
+3.  We use mature, i.e. existing and well-established, toolkit to facilitate the
+    development.
+
+While development of microservices and R packages share folder structure and
+toolkit, they have a distinctly different purpose. In short, R packages "serve"
+microservices, but not the converse. Rather, microservices are stand-alone
+applications that *serve* a user or another system. Microservices are built
+primarily be practitioners.
+
+## Layering the Microservice Functionallity
+
+### Seperation of Concerns
+
+We can separate the concern of microservice functions into two:
+
+1. Core-domain functions. These functions are not aware of the API. 
+2. API functions. These functions wrap core-domain functions.
+
+### Where does each function belong? 
+
+Core functions belong under the `R` folder. For example, the function
+`demo$class_input` (see excerpt) is part of `R/demo.R`. This function receives
+any object and returns its class. It can operate without an API, e.g. calling
+`demo$class_input(mtcars)` returns `data.frame`.
+
+```{r, eval=FALSE, echo = TRUE}
+demo <- new.env()
+
+demo$class_input <- function(x = NULL){
+    return(class(x))
+}
+```
+
+API function, including entrypoints and endpoints, are stored outside the `R`
+folder. In this demonstration they are stored under `inst/entrypoints` and
+`inst/endpoints`, respectively. We discuss in entrypoints and endpoints in
+length in subsequent documentations. For now, an example for an endpoint that
+wraps `demo$class_input` is a nameless function located under
+`inst/endpoints/plumber.R`:
+
+```{r, eval=FALSE, echo = TRUE}
+function(x = NULL){
+    x <- x %>% jsonlite::fromJSON(flatten = TRUE)
+    demo$class_input(x)
+}
+```
+
+As you can see, the nameless function knows about the existence of
+`demo$class_input`, but not the converse.

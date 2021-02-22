@@ -1,0 +1,38 @@
+---
+title: "Quickstart Guide"
+bibliography: []
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+```{r internal-testing, eval=FALSE, include = FALSE}
+path <- tempfile("microservice")
+usethis::create_package(path)
+unlink(path, recursive = TRUE, force = TRUE)
+```
+
+In this quick start guide you'll learn how to get a rudimentary microservice
+working out of the box.
+
+## Workflow
+
+```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
+```
+
+
+
+```{=html}
+<!--
+## Further Reading
+
+* How to use the rudimentary microservice?
+* How to extend, that is customise, the rudimentary microservice?
+-->
+```

@@ -1,0 +1,23 @@
+bibentry("Manual",
+         title = "Building Microservices in R",
+         author = person("Harel", "Lustiger"),
+         organization = "Tidylab",
+         address      = "Auckland, New Zealand",
+         year         = version$year,
+         url          = "https://github.com/tidylab/microservices",
+
+         textVersion =
+         paste("Harel Lustiger (", version$year, "). ",
+               "Building Microservices in R. ",
+               "Tidylab, Auckland, New Zealand. ",
+               "URL https://github.com/tidylab/microservices.",
+               sep=""),
+
+         mheader = "To cite R in publications use:",
+
+	 mfooter =
+         paste("We have invested a lot of time and effort in creating the microservices package,",
+          "please cite it when using it for data analysis.",
+	  "See also", sQuote("citation(\"pkgname\")"),
+	  "for citing R packages.", sep = " ")
+	)
