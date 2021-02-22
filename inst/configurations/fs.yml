@@ -1,0 +1,49 @@
+default:
+  add_plumber_service:
+    files:
+      add:
+        - tests/testthat/test-endpoint-plumber-{route_name}.R
+        - inst/endpoints/plumber-{route_name}.R
+      update:
+        - inst/entrypoints/plumber-foreground.R
+  use_plumber_microservice:
+    files:
+      add:
+        - tests/testthat/test-endpoint-plumber-utility.R
+        - inst/configurations/plumber.yml
+        - inst/endpoints/plumber-utility.R
+        - inst/entrypoints/plumber-background.R
+        - inst/entrypoints/plumber-foreground.R
+      update:
+        - tests/testthat/helpers-xyz.R
+    dependencies:
+      type:
+      - Suggests
+      - Suggests
+      - Suggests
+      - Imports
+      - Suggests
+      - Suggests
+      - Imports
+      - Suggests
+      - Suggests
+      package:
+      - config
+      - httptest
+      - httr
+      - jsonlite
+      - pkgload
+      - plumber
+      - purrr
+      - testthat
+      - usethis
+      version:
+      - '*'
+      - '*'
+      - '*'
+      - '*'
+      - '*'
+      - '>= 1.0.0'
+      - '*'
+      - '*'
+      - '*'
