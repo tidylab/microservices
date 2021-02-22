@@ -32,13 +32,12 @@ RUN echo "require(remotes)" >> .Rprofile
 RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
 RUN R -q -e "update_packages(upgrade  = 'always')"
 
-RUN R -q -e "install_cran(c('odbc', 'profvis', 'renv'))"
+RUN R -q -e "install_cran(c('odbc', 'profvis', 'renv', 'plumber'))"
+RUN R -q -e "install_cran(c('plumber', 'httptest'))"
 RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2', 'pkgdown'))"
 RUN R -q -e "install_cran(('tinytex')); tinytex::install_tinytex()"
 
 # Install Project Dependencies -------------------------------------------------
-RUN R -q -e "install_cran(c('nomnoml', 'webshot'))"
-RUN R -q -e "webshot::install_phantomjs()"
 ENV RENV_PATHS_ROOT '/home/rstudio/.local/share/renv'
 RUN mkdir -p $RENV_PATHS_ROOT
 COPY ./DESCRIPTION ./DESCRIPTION
