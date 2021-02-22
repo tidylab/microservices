@@ -1,0 +1,67 @@
+---
+title: "use_plumber_microservice"
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+file_fs <- system.file("inst", "configurations", "fs.yml", package = "microservices", mustWork = TRUE)
+info <- config::get("use_plumber_microservice", file=file_fs)
+microservice <- list(files = info$files, dependencies = as.data.frame(info$dependencies))
+```
+
+## How It Works
+
+Given a `path` to a folder
+
+When `use_microservice(path = ".")` is called
+
+Then the function creates the following files:
+
+```{r, code = microservice$files$add, eval = FALSE, echo=TRUE}
+```
+
+And updates the following files:
+
+```{r, code = microservice$files$update, eval = FALSE, echo=TRUE}
+```
+
+And adds the following packages to the DESCRIPTION file:
+
+```{r}
+kable(microservice$dependencies)
+```
+
+## When to Use `plumber`
+
+-   A Single user/machine applications.
+-   Scheduled tasks. For example, you could use [AirFlow with HTTP
+    Operators](https://airflow.apache.org/docs/apache-airflow-providers-http/stable/operators.html)
+    to automate processes.
+
+### `plumber` Advantages
+
+-   Comes with familiar way to document the microservice endpoint.
+-   Maturing package that comes with documentation, examples and support.
+
+### `plumber` Disadvantages
+
+-   Runs on a single thread. That means that parallel algorithms such as random
+    forest, can only be run on one core.
+-   Serves only one caller at a time.
+-   Can't make inward calls for other services. At least with the current
+    specification (v.1.0.0), plumber can't be
+    [re-entrant](https://en.wikipedia.org/wiki/Reentrancy_(computing)). For
+    example, if a microservice has three endpoints,`read_table`, `write_table`,
+    and `orchestrator`, where the `orchestrator` reads a data table, transforms
+    it, and writes it back, then the `orchestrator` can't make inwards calls via
+    HTTP to `read_table` and `write_table`.
+
+## Workflow
+
+```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
+```
+
+

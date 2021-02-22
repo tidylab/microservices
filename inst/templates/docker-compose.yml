@@ -1,0 +1,63 @@
+services:
+  ######################################################
+  # R Core
+  ######################################################
+  r-core:
+    image: r/core/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-core/Dockerfile
+    entrypoint: '/bin/bash'
+    container_name: r_core
+    restart: "no"
+  ######################################################
+  # R Development
+  ######################################################
+  r-develop:
+    image: r/core/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-core/Dockerfile
+    entrypoint: '/init'
+    container_name: r_develop
+    volumes:
+      - ".:/home/rstudio/rproject/"
+    ports:
+      - 8787:8787
+    environment:
+      - DISABLE_AUTH=true
+    restart: "no"
+  ######################################################
+  # R Testing
+  ######################################################
+  r-test:
+    image: r/test/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-test/Dockerfile
+    entrypoint: '/bin/bash'
+    container_name: r_test
+    restart: "no"
+    depends_on:
+      - r-core
+  ######################################################
+  # R Plumber
+  ######################################################
+  r-plumber:
+    image: r/plumber/microservices:1.0.0
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-plumber/Dockerfile
+      args:
+        - R_REPOS='https://mran.microsoft.com/snapshot/2021-02-15'
+    container_name: r_plumber
+    restart: always
+    stdin_open: true
+    tty: true
+    ports:
+      - 8080:8080
+  ######################################################
+version: "3.8"
+networks:
+  default:
+    name: r-project

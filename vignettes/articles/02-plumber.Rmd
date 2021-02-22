@@ -1,0 +1,140 @@
+---
+title: "Implementing a Microservice with Plumber"
+bibliography: []
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+## Running Microservices with **plumber** API
+
+### The Elements of **plumber**
+
+1.  [Foreground and Background Servers]
+2.  Endpoint
+3.  R Functions
+
+### Foreground and Background Servers
+
+This package comes with working out-of-the-box **plumber** microservice. There
+are two options to spin-up the service:
+
+1.  `entrypoints/plumber-foreground.R` runs at the foreground; and
+2.  `entrypoints/plumber-background.R` runs at the background.
+
+Originally **plumber** runs in the foreground. That means the microservice locks
+down the session from running CLI commands or scripts. While this configuration
+is fine during deployment, on a dedicated server, it severely impedes
+development. We circumvent that hindrance by sourcing the microservice as a
+local job in RStudio.
+
+### Dissecting the plumber Entrypoint
+
+The commands to run the demo microservice with a **plumber** API in the
+foreground are:
+
+```{r code=read_lines("entrypoints","plumber-foreground.R"), eval=FALSE, echo=TRUE}
+```
+
+1.  `plumber::Plumber$new` creates a new Plumber router object. It requires a
+    path to an endpoint file, which we discuss later in this document.
+2.  `plumber$setDocsCallback` by default plumber opens a browser with [OpenAPI
+    Specification](https://swagger.io/specification/). OpenAPI tells the
+    microservice users what URI exists, what are their parameters. In addition,
+    OpenAPI allows users to fiddle around with API requests directly from
+    through its GUI. While OpenAPI is highly useful, it fails when launching the
+    microservice in the background. Instead, we nullify the callback function ,
+    and the user can manually browse the visual documentation at
+    <http://127.0.0.1:8080/__docs__/>.
+3.  `plumber$run` spins up the microservice at the given `host` and `port`.
+
+As a design choice, we store the service configuration on a yaml file and load
+it to the global environment before calling `plumber$run`. The configuration
+file is located in `config/r-config.yml` and its details are:
+
+```{r code=read_lines("inst","config","r-config.yml"), eval=FALSE, echo=TRUE}
+```
+
+### Dissecting the plumber Endpoint
+
+In the context of **plumber**, an endpoint is an R script with one or more
+functions that respond to particular requests. An example for such function can
+be found in the demo's endpoint at `endpoints/plumber.R`:
+
+```{e eval = FALSE, echo = TRUE}
+# Global code; gets executed at plumb() time.
+pkgload::load_all()
+
+#* Return input class
+#* Return the class of the input.
+#* @param x Any R data structure.
+#* @get utility/class
+function(x = NULL){
+    x <- x %>% jsonlite::fromJSON(flatten = TRUE)
+    demo$class_input(x)
+}
+```
+
+In this example, there is a nameless function that will respond to GET requests
+at the URN `/utility/class`. Say if the microservice URL is
+`http://127.0.0.1:8080`, then the complete function address (URI) is
+`http://127.0.0.1:8080/utility/class`.
+
+This endpoint excerpt emphasis two function are beyond the standard
+recommendations for **plumber**:
+
+1.  `pkgload::load_all()` makes the functions of the microservice (in the
+    excerpt case its `demo$class_input`) available to the endpoint. Originally,
+    `pkgload::load_all()` is used for package development in R. Calling the
+    function simulates the package under development as it were installed and
+    loaded in R. In the excerpt case, `demo$class_input` lives under the "R"
+    folder, and is loaded\
+2.  `jsonlite::fromJSON` parses the received input into a familiar R object,
+    such as a data.frame, list or some atomic data structure. Without this
+    explicit call, the endpoint might misinterpret its input argument, a JSON
+    string, as a character scalar.
+
+You can find more information about **plumber** endpoints at the [package's
+website](https://www.rplumber.io/articles/routing-and-input.html).
+
+## Communicating with Microservice
+
+### Inspecting **plumber** Behaviour
+
+This demo include three utility URIs:
+
+1.  `127.0.0.1:8080/utility/healthcheck` returns status 200 if server is live
+    and responding.
+2.  `127.0.0.1:8080/utility/class` returns the class of the object sent to the
+    server. This is useful to validate a JSON string is parsed as expected on
+    the microservice.
+3.  `127.0.0.1:8080/utility/mirror` returns the object that was sent to the
+    server. This is useful to scrutinise the returning object from the
+    microservice.
+
+### Sending and Receiving JSON
+
+Send an object from R to the microservice with `jsonlite::toJSON`. For example,
+sending mtcars to `utility/mirror`:
+
+```{r toJSON, eval = FALSE, echo=TRUE}
+input <- mtcars %>% tibble::rownames_to_column()
+x <- jsonlite::toJSON(input, auto_unbox = TRUE)
+url <- URLencode(paste0("http://localhost:808/utility/mirror?x=", x))
+response <- httr::GET(url)
+```
+
+Parse an object returning from the microservice with `jsonlite::fromJSON`, For
+example, parsing the mtcars returning from `utility/mirror`:
+
+```{r fromJSON, eval = FALSE, echo=TRUE}
+output <-
+  httr::content(response) %>%
+  jsonlite::fromJSON()
+```

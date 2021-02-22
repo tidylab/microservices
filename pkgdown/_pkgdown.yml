@@ -1,0 +1,26 @@
+url: https://tidylab.github.io/microservices/
+title: "Use Microservices in R"
+authors:
+  Harel Lustiger:
+    href: https://github.com/tidylab
+  Tidylab:
+    href: "https://github.com/tidylab"
+    html: "<img src='https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true' height=24>"
+
+
+# Articles ----------------------------------------------------------------
+articles:
+- title: "Background"
+  contents:
+  - articles/01-introduction
+- title: "Technologies"
+  contents:
+  - articles/02-plumber
+
+
+# Functions ---------------------------------------------------------------
+reference:
+- title: plumber-based microservice
+  contents:
+  - matches("plumber")
+
