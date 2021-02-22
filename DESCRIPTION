@@ -1,6 +1,6 @@
 Package: microservices
 Type: Package
-Title: Expose the Functionality of a Software Program to the Outside via 'HTTP' Requests
+Title: Breakdown a Monolithic Application to a Suite of Services
 URL: https://github.com/tidylab/microservices
 BugReports: https://github.com/tidylab/microservices/issues
 Version: 0.0.1
