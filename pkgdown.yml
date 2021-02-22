@@ -8,7 +8,7 @@ articles:
   details/add_plumber_service: add_plumber_service.html
   details/use_plumber_microservice: use_plumber_microservice.html
   excerpts/setup-rudimentary-microservice: setup-rudimentary-microservice.html
-last_built: 2021-02-22T20:23Z
+last_built: 2021-02-22T21:31Z
 urls:
   reference: https://tidylab.github.io/microservices//reference
   article: https://tidylab.github.io/microservices//articles
