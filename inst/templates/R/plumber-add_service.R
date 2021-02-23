@@ -3,14 +3,17 @@
 #' @inheritParams use_plumber_microservice
 #' @param name (`character`) what is the service route name? For example, if
 #'   \code{name} = "repository" then the set of services would become available
-#'   at \url{http://127.0.0.1:8080/repository/}.
+#'   at `http://127.0.0.1:8080/repository/`.
 #' @includeRmd vignettes/details/add_plumber_service.Rmd
 #' @family plumber microservice
 #' @export
 #' @examples
 #' path <- tempfile()
+#' dir.create(path, showWarnings = FALSE, recursive = TRUE)
 #' use_plumber_microservice(path)
+#'
 #' add_plumber_service(path, name = "repository")
+#'
 #' list.files(path, recursive = TRUE)
 add_plumber_service <- function(path = ".", name, overwrite = FALSE){
     name <- gsub(" |\\.", "-", tolower(name))

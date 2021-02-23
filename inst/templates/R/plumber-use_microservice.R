@@ -9,8 +9,11 @@
 #' @export
 #' @examples
 #' path <- tempfile()
+#' dir.create(path, showWarnings = FALSE, recursive = TRUE)
 #' use_plumber_microservice(path)
+#'
 #' list.files(path, recursive = TRUE)
+#'
 #' cat(read.dcf(file.path(path, "DESCRIPTION"), "Imports"))
 #' cat(read.dcf(file.path(path, "DESCRIPTION"), "Suggests"))
 use_plumber_microservice <- function(path = ".", overwrite = FALSE){
