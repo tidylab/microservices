@@ -29,17 +29,17 @@ Depends:
     R (>= 3.5)
 Suggests: 
     testthat (>= 2.3.0),
-    usethis (>= 1.3.0),
     httptest (>= 3.3.0),
     plumber (>= 1.0.0),
+    usethis,
     jsonlite,
     pkgload,
     httr
 Imports:
+    config,
     desc,
     dplyr,
     glue,
     purrr,
-    config,
     withr
 Config/testthat/edition: 3

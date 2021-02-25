@@ -13,7 +13,7 @@ test_that("runs without errors",{
 test_that("copies all files",{
     file_fs <- system.file("configurations", "fs.yml", package = "microservices", mustWork = TRUE)
     files <- file.path(path, config::get("use_plumber_microservice", file = file_fs)$files$add)
-    for(file in files) expect_file_exists(file)
+    for(file in files) expect_file_exists(glue::glue(file, route_name = "utility"))
 })
 
 test_that("adds all package dependencies",{
@@ -33,7 +33,7 @@ test_that("adds all package dependencies",{
 
 # add_plumber_service -----------------------------------------------------
 test_that("fails if there is no prior service deployed",{
-    expect_error(add_plumber_service(path = tempfile(), name = name))
+    expect_error(add_plumber_service(path = tempfile(), name = name), "use_plumber_microservice")
 })
 
 test_that("runs without errors",{

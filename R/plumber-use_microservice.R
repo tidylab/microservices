@@ -9,7 +9,6 @@
 #' @export
 #' @examples
 #' path <- tempfile()
-#' dir.create(path, showWarnings = FALSE, recursive = TRUE)
 #' use_plumber_microservice(path)
 #'
 #' list.files(path, recursive = TRUE)
@@ -17,6 +16,7 @@
 #' cat(read.dcf(file.path(path, "DESCRIPTION"), "Imports"))
 #' cat(read.dcf(file.path(path, "DESCRIPTION"), "Suggests"))
 use_plumber_microservice <- function(path = ".", overwrite = FALSE){
+    dir.create(path, FALSE, TRUE)
     .use_plumber_microservice$add_files(path = path, overwrite = overwrite)
     .use_plumber_microservice$update_files(path = path)
     .use_plumber_microservice$add_dependencies(path = path)
@@ -32,7 +32,7 @@ use_plumber_microservice <- function(path = ".", overwrite = FALSE){
     files <- config::get("use_plumber_microservice", file = file_fs)$files$add
 
     for(file in files){
-        file_source <- system.file(package = "microservices", "templates", file, mustWork = TRUE)
+        file_source <- fs::path_package("microservices", "templates", gsub("plumber-utility\\.R$", "plumber-{route_name}.R", file))
         file_target <- file.path(path, file)
         dir.create(dirname(file_target), showWarnings = FALSE, recursive = TRUE)
         file.copy(from = file_source, to = file_target, overwrite = overwrite)
