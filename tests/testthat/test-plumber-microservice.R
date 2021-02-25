@@ -1,7 +1,7 @@
 # Setup -------------------------------------------------------------------
 expect_file_exists <- function(file) expect_true(file.exists(file), label = paste("does", basename(file), "exist?"))
-path <<- tempfile()
-name <<- "db"
+path <- tempfile()
+name <- "db"
 withr::defer(unlink(path))
 
 
