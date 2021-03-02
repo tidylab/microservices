@@ -5,6 +5,7 @@
 #'   \code{name} = "repository" then the set of services would become available
 #'   at `http://127.0.0.1:8080/repository/`.
 #' @includeRmd vignettes/details/add_plumber_service.Rmd
+#' @return No return value, called for side effects.
 #' @family plumber microservice
 #' @export
 #' @examples

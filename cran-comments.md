@@ -1,5 +1,11 @@
 ## v0.1.0 First release
 
+* Revision: add @value to Rd files
+
+  - add_plumber_service.Rd: 
+  - pipe.Rd: \arguments,  
+  - use_plumber_microservice.Rd: 
+
 * New submission
 
 * Possibly mis-spelled words in DESCRIPTION:

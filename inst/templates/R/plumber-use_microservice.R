@@ -5,6 +5,7 @@
 #' @param path (`character`) Where is the project root folder?
 #' @param overwrite (`logical`) Should existing destination files be overwritten?
 #' @includeRmd vignettes/details/use_plumber_microservice.Rmd
+#' @return No return value, called for side effects.
 #' @family plumber microservice
 #' @export
 #' @examples
