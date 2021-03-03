@@ -9,7 +9,7 @@ authors:
 template:
    params:
      docsearch:
-       api_key: 474d70ad981ec9e952f0fdf673216b13
+       api_key: 317fa19bd6e1e1c7fa701c85ef7fe506
        index_name: microservices
 
 
