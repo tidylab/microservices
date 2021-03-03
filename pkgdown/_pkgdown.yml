@@ -6,6 +6,12 @@ authors:
   Tidylab:
     href: "https://github.com/tidylab"
     html: "<img src='https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true' height=24>"
+template:
+   params:
+     docsearch:
+       api_key: 317fa19bd6e1e1c7fa701c85ef7fe506
+       index_name: microservices
+
 
 
 # Articles ----------------------------------------------------------------

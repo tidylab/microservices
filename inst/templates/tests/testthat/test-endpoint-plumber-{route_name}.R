@@ -1,5 +1,5 @@
 # Configuration -----------------------------------------------------------
-config <- config::get(file = file.path(system.file(package = pkg_name()), "configurations", "plumber.yml"))
+config <- config::get(file = system.file("configurations", "plumber.yml", package = pkg_name(), mustWork = TRUE))
 
 
 # Helpers -----------------------------------------------------------------

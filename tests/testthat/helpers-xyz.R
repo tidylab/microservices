@@ -1,5 +1,4 @@
 # httptest ----------------------------------------------------------------
-library(httptest)
 options(httptest.debug = FALSE)
 
 test_http <- function(desc, code){
@@ -14,14 +13,4 @@ test_http <- function(desc, code){
         })
 }
 
-
-# helper functions --------------------------------------------------------
-pkg_name <- function(){
-    desc <- tryCatch(
-        list.files(getwd(), "DESCRIPTION")[[1]],
-        error = function(e) return(list.files(dirname(dirname(getwd())), "DESCRIPTION", recursive = TRUE, full.names = TRUE)[[1]])
-    )
-
-    read.dcf(desc, "Package")[[1]]
-}
-
+pkg_name <- function() getPackageName(search()[max(which(search() %in% c(".GlobalEnv", "devtools_shims")))+1])

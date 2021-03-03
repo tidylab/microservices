@@ -10,14 +10,13 @@ status](https://github.com/tidylab/microservices/workflows/R-CMD-check/badge.svg
 
 <!-- badges: end -->
 
-Expose the Functionality of a Software Program to the Outside via ‘HTTP’
-Requests
+Breakdown a Monolithic Application to a Suite of Services
 
 <img src="https://i.imgur.com/nZ5jw2g.png" width="100%" style="display: block; margin: auto;" />
 
 ## Introduction
 
-Microservice architectural style is an approach to developing a single
+‘Microservice’ architectural style is an approach to developing a single
 application as a suite of small services, each running in its own
 process and communicating with lightweight mechanisms, often an ‘HTTP’
 resource ‘API.’ These services are built around business capabilities

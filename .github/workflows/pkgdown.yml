@@ -23,7 +23,7 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          brew install harfbuzz fribidi libgit2 
+          brew install harfbuzz fribidi libgit2
 
       - name: Prepare
         run: |
@@ -46,7 +46,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          remotes::install_cran(c("tidyverse", "devtools", "pkgdown", "covr"))
+          sapply(c("tidyverse", "devtools", "pkgdown", "covr"), function(x) try(remotes::install_cran(x)))
           remotes::update_packages("pkgdown")
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
