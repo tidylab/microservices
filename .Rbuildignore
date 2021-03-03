@@ -5,6 +5,7 @@
 ^data-raw/
 ^inst/snippets/
 ^renv/
+^tests/
 ^vignettes/
 
 # Files

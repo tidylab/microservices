@@ -3,7 +3,7 @@ Type: Package
 Title: Breakdown a Monolithic Application to a Suite of Services
 URL: https://github.com/tidylab/microservices
 BugReports: https://github.com/tidylab/microservices/issues
-Version: 0.0.1
+Version: 0.1.0
 Date: 2021-02-15
 Authors@R: c(
     person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre"),
@@ -11,7 +11,7 @@ Authors@R: c(
     person("Tidylab", role = c("cph", "fnd"))
     )
 Maintainer: Harel Lustiger <tidylab@gmail.com>
-Description: Microservice architectural style is an approach to developing a 
+Description: 'Microservice' architectural style is an approach to developing a 
     single application as a suite of small services, each running in its own 
     process and communicating with lightweight mechanisms, often an 'HTTP' 
     resource 'API'. These services are built around business capabilities and 
@@ -33,13 +33,12 @@ Suggests:
     httptest (>= 3.3.0),
     plumber (>= 1.0.0),
     jsonlite,
-    pkgload,
     httr
 Imports:
+    config,
     desc,
     dplyr,
     glue,
     purrr,
-    config,
     withr
 Config/testthat/edition: 3
