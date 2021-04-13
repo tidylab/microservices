@@ -33,6 +33,8 @@ Suggests:
     httptest (>= 3.3.0),
     plumber (>= 1.0.0),
     jsonlite,
+    promises,
+    future,
     httr
 Imports:
     config,

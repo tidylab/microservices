@@ -27,6 +27,8 @@ default:
       - Imports
       - Suggests
       - Suggests
+      - Suggests
+      - Suggests
       package:
       - config
       - httptest
@@ -37,6 +39,8 @@ default:
       - purrr
       - testthat
       - usethis
+      - promises
+      - future
       version:
       - '*'
       - '*'
@@ -44,6 +48,8 @@ default:
       - '*'
       - '*'
       - '>= 1.0.0'
+      - '*'
+      - '*'
       - '*'
       - '*'
       - '*'
