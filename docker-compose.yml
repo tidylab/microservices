@@ -3,12 +3,12 @@ services:
   # R Testing
   ######################################################
   r-test:
-    image: package/microservice:4.0.5
+    image: r-package/microservices
     build:
       context: ./
       dockerfile: ./.dev/docker/r-test/Dockerfile
     entrypoint: '/bin/bash'
-    container_name: r_package
+    container_name: r_test
     restart: "no"
   ######################################################
   # R Plumber
@@ -29,4 +29,4 @@ services:
 version: "3.8"
 networks:
   default:
-    name: r-package
+    name: r-microservices

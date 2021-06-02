@@ -26,7 +26,7 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Project Dependencies -------------------------------------------------
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-10-10\'
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-05-18\'
 RUN touch .Rprofile .Renviron
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
