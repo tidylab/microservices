@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">Use Microservices in R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -59,6 +59,9 @@
 </li>
 <li>
   <a href="../../articles/index.html">Articles</a>
+</li>
+<li>
+  <a href="../../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -101,7 +104,7 @@
 <h2 class="hasAnchor">
 <a href="#how-it-works" class="anchor"></a>How It Works</h2>
 <p>Given a <code>path</code> to a folder</p>
-<p>When <code>use_microservice(path = ".")</code> is called</p>
+<p>When <code><a href="../../reference/use_plumber_microservice.html">use_microservice(path = ".")</a></code> is called</p>
 <p>Then the function creates the following files:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tests</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">test</span><span class="op">-</span><span class="va">endpoint</span><span class="op">-</span><span class="va">plumber</span><span class="op">-</span><span class="va">utility.R</span>
@@ -165,6 +168,16 @@
 <td align="left">usethis</td>
 <td align="left">*</td>
 </tr>
+<tr class="even">
+<td align="left">Suggests</td>
+<td align="left">promises</td>
+<td align="left">*</td>
+</tr>
+<tr class="odd">
+<td align="left">Suggests</td>
+<td align="left">future</td>
+<td align="left">*</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -190,8 +203,11 @@
 <ul>
 <li>Runs on a single thread. That means that parallel algorithms such as random forest, can only be run on one core.</li>
 <li>Serves only one caller at a time.</li>
-<li>Can’t make inward calls for other services. At least with the current specification (v.1.0.0), plumber can’t be <a href="https://en.wikipedia.org/wiki/Reentrancy_(computing)">re-entrant</a>. For example, if a microservice has three endpoints,<code>read_table</code>, <code>write_table</code>, and <code>orchestrator</code>, where the <code>orchestrator</code> reads a data table, transforms it, and writes it back, then the <code>orchestrator</code> can’t make inwards calls via HTTP to <code>read_table</code> and <code>write_table</code>.</li>
+<li>Can’t make inward calls for other services, That means plumber can’t be <a href="https://en.wikipedia.org/wiki/Reentrancy_(computing)">re-entrant</a>. For example, if a microservice has three endpoints,<code>read_table</code>, <code>write_table</code>, and <code>orchestrator</code>, where the <code>orchestrator</code> reads a data table, transforms it, and writes it back, then the <code>orchestrator</code> can’t make inwards calls via HTTP to <code>read_table</code> and <code>write_table</code>.</li>
 </ul>
+<div class="alert alert-warning">
+<p><strong>Note:</strong> While <code>plumber</code> is single-threaded by nature, it is possible to perform parallel execution using the <code>promises</code> package. See links under References.</p>
+</div>
 </div>
 </div>
 <div id="workflow" class="section level2">
@@ -215,6 +231,14 @@
 * How to use the rudimentary microservice?
 * How to extend, that is customise, the rudimentary microservice?
 -->
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<ul>
+<li><a href="https://blog.rstudio.com/2021/03/29/plumber-v1-1-0/#parallel-exec">Parallel execution in plumber</a></li>
+<li><a href="https://rstudio.github.io/promises/articles/overview.html"><code>promises</code> package</a></li>
+</ul>
 </div>
   </div>
 
