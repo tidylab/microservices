@@ -3,12 +3,12 @@ services:
   # R Testing
   ######################################################
   r-test:
-    image: package/microservice:4.0.5
+    image: r-package/microservices
     build:
       context: ./
       dockerfile: ./.dev/docker/r-test/Dockerfile
     entrypoint: '/bin/bash'
-    container_name: r_package
+    container_name: r_test
     restart: "no"
   ######################################################
   # R Plumber
@@ -19,7 +19,7 @@ services:
       context: ./
       dockerfile: ./.dev/docker/r-plumber/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2021-03-31'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2021-05-18'
     container_name: r_plumber
     restart: always
     stdin_open: true
@@ -27,6 +27,6 @@ services:
     ports:
       - 8080:8080
 version: "3.8"
-networks:
-  default:
-    name: r-package
+# networks:
+#   default:
+#     name: r-package
