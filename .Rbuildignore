@@ -5,20 +5,18 @@
 ^data-raw/
 ^inst/snippets/
 ^renv/
-^tests/
 ^vignettes/
 
 # Files
 ^\..*
 ^.*\.Rproj$
-^R/utils-microservice.R$
 ^codecov\.yml$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
 ^README\.Rmd$
 ^LICENSE\.md$
 ^vignettes/_common.R$
-^vignettes/references.bib$
+^R/utils-microservice.R$
 
 # Docker
 ^docker-compose\.yml$
