@@ -1,7 +1,13 @@
 # microservices 0.2.0
 
 * Added support for multi-session
+* Added alias:
+    * `use_plumber_microservice()` and `use_microservice()` are synonyms
+    * `add_plumber_service()` and `add_service()` are synonyms.
 
 # microservices 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+## New features
+
+ * `use_plumber_microservice()`
+ * `add_plumber_service()`

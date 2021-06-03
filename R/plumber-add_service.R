@@ -1,12 +1,15 @@
 #' @title Add a Service Route to the Microservice
 #' @description Expose additional set of services on a separate URL.
+#'
 #' @inheritParams use_plumber_microservice
 #' @param name (`character`) what is the service route name? For example, if
 #'   \code{name} = "repository" then the set of services would become available
 #'   at `http://127.0.0.1:8080/repository/`.
+#'
 #' @includeRmd vignettes/details/add_plumber_service.Rmd
 #' @return No return value, called for side effects.
 #' @family plumber microservice
+#' @note `add_plumber_service()` and `add_service()` are synonyms.
 #' @export
 #' @examples
 #' path <- tempfile()
@@ -25,6 +28,13 @@ add_plumber_service <- function(path = ".", name, overwrite = FALSE){
 
     invisible()
 }
+
+
+# alias -------------------------------------------------------------------
+#' @rdname add_plumber_service
+#' @export
+add_service <- add_plumber_service
+
 
 # low-level functions -----------------------------------------------------
 .add_plumber_service <- new.env()
