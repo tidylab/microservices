@@ -3,7 +3,7 @@ Type: Package
 Title: Breakdown a Monolithic Application to a Suite of Services
 URL: https://github.com/tidylab/microservices
 BugReports: https://github.com/tidylab/microservices/issues
-Version: 0.1.0
+Version: 0.1.1
 Date: 2021-05-18
 Authors@R: c(
     person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre"),
