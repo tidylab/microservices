@@ -15,7 +15,7 @@ source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 1.  Deploy the Microservice infrastructure
 
 ```{r, eval=FALSE, echo=TRUE}
-microservices::use_plumber_microservice(path = ".")
+microservices::use_microservice(path = ".")
 remotes::install_deps()
 devtools::document()
 ```
