@@ -9,7 +9,6 @@
 #' @includeRmd vignettes/details/use_microservice.Rmd
 #' @return No return value, called for side effects.
 #' @family plumber microservice
-#' @note `use_plumber_microservice()` and `use_microservice()` are synonyms.
 #' @export
 #' @examples
 #' path <- tempfile()
@@ -26,12 +25,6 @@ use_microservice <- function(path = ".", overwrite = FALSE){
     .use_microservice$add_dependencies(path = path)
     invisible()
 }
-
-
-# alias -------------------------------------------------------------------
-#' @rdname use_microservice
-#' @export
-use_plumber_microservice <- use_microservice
 
 
 # low-level functions -----------------------------------------------------

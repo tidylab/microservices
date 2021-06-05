@@ -9,7 +9,6 @@
 #' @includeRmd vignettes/details/add_service.Rmd
 #' @return No return value, called for side effects.
 #' @family plumber microservice
-#' @note `add_plumber_service()` and `add_service()` are synonyms.
 #' @export
 #' @examples
 #' path <- tempfile()
@@ -28,12 +27,6 @@ add_service <- function(path = ".", name, overwrite = FALSE){
 
     invisible()
 }
-
-
-# alias -------------------------------------------------------------------
-#' @rdname add_service
-#' @export
-add_plumber_service <- add_service
 
 
 # low-level functions -----------------------------------------------------
