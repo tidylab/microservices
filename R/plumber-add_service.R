@@ -1,7 +1,7 @@
 #' @title Add a Service Route to the Microservice
 #' @description Expose additional set of services on a separate URL.
 #'
-#' @inheritParams use_plumber_microservice
+#' @inheritParams use_microservice
 #' @param name (`character`) what is the service route name? For example, if
 #'   \code{name} = "repository" then the set of services would become available
 #'   at `http://127.0.0.1:8080/repository/`.

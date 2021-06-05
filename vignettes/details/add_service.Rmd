@@ -24,7 +24,7 @@ warning("`add_plumber_service` adds a service to pre-existing plumber microservi
 
 ## How It Works
 
-Given a `path` ("`r path`") to a folder and a `name` ("`r name`")
+Given a `path` (`r path`) to a folder and a `name` (`r name`)
 
 When `add_plumber_service` is called
 
@@ -43,5 +43,5 @@ And updates the following files:
 In scenarios where services are thematically linked to each other. Examples for
 themes that should be mounted separately:
 
-* "forecasting" and "anomaly detection"
-* "user" and "business"
+* 'forecasting' and 'anomaly detection'
+* 'user' and 'business'
