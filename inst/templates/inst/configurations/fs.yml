@@ -1,12 +1,12 @@
 default:
-  add_plumber_service:
+  add_service:
     files:
       add:
         - tests/testthat/test-endpoint-plumber-{route_name}.R
         - inst/endpoints/plumber-{route_name}.R
       update:
         - inst/entrypoints/plumber-foreground.R
-  use_plumber_microservice:
+  use_microservice:
     files:
       add:
         - tests/testthat/test-endpoint-plumber-utility.R

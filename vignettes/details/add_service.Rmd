@@ -1,5 +1,5 @@
 ---
-title: "add_plumber_service"
+title: "add_service"
 editor_options: 
   markdown: 
     wrap: 80
@@ -10,7 +10,7 @@ source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 path <<- "."
 name <<- "repository"
 file_fs <- system.file("inst", "configurations", "fs.yml", package = "microservices", mustWork = TRUE)
-info <- config::get("add_plumber_service", file=file_fs)
+info <- config::get("add_service", file=file_fs)
 microservice <- list(files = info$files, dependencies = as.data.frame(info$dependencies))
 microservice$files$add <- sapply(microservice$files$add, glue::glue, route_name = name)
 ```
@@ -19,14 +19,14 @@ Lay the infrastructure for an additional set of services. That includes adding a
 unit test, adding an endpoint, and extending the entrypointy.
 
 ```{r warning=TRUE}
-warning("`add_plumber_service` adds a service to pre-existing plumber microservice which you could deploy by calling `use_plumber_microservice`.")
+warning("`add_service` adds a service to pre-existing plumber microservice which you could deploy by calling `use_microservice`.")
 ```
 
 ## How It Works
 
 Given a `path` (`r path`) to a folder and a `name` (`r name`)
 
-When `add_plumber_service` is called
+When `add_service` is called
 
 Then the function creates the following files:
 
