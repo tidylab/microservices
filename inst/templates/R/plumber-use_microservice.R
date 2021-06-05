@@ -1,12 +1,15 @@
 #' @title Use a plumber Microservice in an R Project
-#' @description Lay the infrastructure for a microservice. That includes unit
-#'   test, dependency packages, configuration file, entrypoints and utility
-#'   endpoint.
+#' @description
+#'  Lay the infrastructure for a microservice. That includes unit test,
+#'  dependency packages, configuration file, entrypoints and utility endpoint.
+#'
 #' @param path (`character`) Where is the project root folder?
 #' @param overwrite (`logical`) Should existing destination files be overwritten?
+#'
 #' @includeRmd vignettes/details/use_plumber_microservice.Rmd
 #' @return No return value, called for side effects.
 #' @family plumber microservice
+#' @note `use_plumber_microservice()` and `use_microservice()` are synonyms.
 #' @export
 #' @examples
 #' path <- tempfile()
@@ -23,6 +26,12 @@ use_plumber_microservice <- function(path = ".", overwrite = FALSE){
     .use_plumber_microservice$add_dependencies(path = path)
     invisible()
 }
+
+
+# alias -------------------------------------------------------------------
+#' @rdname use_plumber_microservice
+#' @export
+use_microservice <- use_plumber_microservice
 
 
 # low-level functions -----------------------------------------------------

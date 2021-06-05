@@ -35,7 +35,6 @@ stop("Adding a Microservice increases complexity. You must have good reasons to 
 ```
 
 ```{r message=TRUE}
-# https://medium.com/swlh/stop-this-microservices-madness-8e4e0695805b
 message("
 Good reasons to add a Microservice:
 

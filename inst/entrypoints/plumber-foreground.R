@@ -2,6 +2,9 @@
 ## plumber: Quick Start Guide
 ## <https://www.rplumber.io/index.html>
 ################################################################################
+usethis::proj_set()
+if(is.null(pkgload::pkg_ns())) pkgload::load_all()
+
 endpoint_path <- usethis::proj_path('inst', 'endpoints')
 config_path <- usethis::proj_path('inst', 'configurations', 'plumber.yml')
 config <- config::get(file = config_path)

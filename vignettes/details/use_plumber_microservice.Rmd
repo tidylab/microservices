@@ -51,17 +51,23 @@ kable(microservice$dependencies)
 -   Runs on a single thread. That means that parallel algorithms such as random
     forest, can only be run on one core.
 -   Serves only one caller at a time.
--   Can't make inward calls for other services. At least with the current
-    specification (v.1.0.0), plumber can't be
+-   Can't make inward calls for other services, That means plumber can't be
     [re-entrant](https://en.wikipedia.org/wiki/Reentrancy_(computing)). For
     example, if a microservice has three endpoints,`read_table`, `write_table`,
     and `orchestrator`, where the `orchestrator` reads a data table, transforms
     it, and writes it back, then the `orchestrator` can't make inwards calls via
     HTTP to `read_table` and `write_table`.
 
+```{r, warning=TRUE}
+warning("While `plumber` is single-threaded by nature, it is possible to perform parallel execution using the `promises` package. See links under References.")
+```
+
 ## Workflow
 
 ```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
 ```
 
+## References
 
+* [Parallel execution in plumber](https://blog.rstudio.com/2021/03/29/plumber-v1-1-0/#parallel-exec)
+* [`promises` package](https://rstudio.github.io/promises/articles/overview.html)

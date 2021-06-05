@@ -1,5 +1,15 @@
+# R Package Development: Core --------------------------------------------------
+FROM tidylab/microservice:4.1.0
+
+# Install Project Dependencies -------------------------------------------------
+RUN R -q -e "install_cran(c('plumber', 'httptest'), dependencies = 'Depends')"
+
+COPY ./DESCRIPTION ./DESCRIPTION
+RUN R -q -e "install_deps(dependencies = 'Depends')"
+RUN R -q -e "install_deps(dependencies = 'Imports')"
+RUN R -q -e "install_deps(dependencies = 'Suggests')"
+
 # R Package Development: Testing------------------------------------------------
-FROM r/core/package:4.0.4
 RUN touch .Renviron .Rprofile
 RUN echo "" > .Rprofile
 
@@ -18,7 +28,6 @@ RUN R -q -e "system.time({\
                devtools::load_all(export_all = FALSE, helpers = FALSE);\
                testthat::test_dir('./tests/testthat', stop_on_failure = TRUE)\
              })"
-#RUN R -q -e "pkgdown::build_site(devel = TRUE)"
 
 # Teardown ---------------------------------------------------------------------
 ENTRYPOINT /bin/bash

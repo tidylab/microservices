@@ -2,5 +2,7 @@
 
 export("%>%")
 export(add_plumber_service)
+export(add_service)
+export(use_microservice)
 export(use_plumber_microservice)
 importFrom(purrr,"%>%")

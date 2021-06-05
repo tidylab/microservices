@@ -6,6 +6,7 @@ renv/
 
 # Files
 CRAN-RELEASE
+cran-comments.md
 .Renviron
 .Rproj.user
 .Rhistory

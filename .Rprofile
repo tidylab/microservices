@@ -10,10 +10,6 @@ assign(".Rprofile", new.env(), envir = globalenv())
     Date <- as.character(read.dcf("DESCRIPTION", "Date"));
     URL <- if(is.na(Date)) "https://cran.rstudio.com/" else paste0("https://mran.microsoft.com/snapshot/", Date)
     options(repos = URL)
-
-    # Programming Logic
-    pkgs <- c("usethis", "devtools", "magrittr", "testthat")
-    invisible(sapply(pkgs, require, warn.conflicts = FALSE, character.only = TRUE))
 }
 
 # .Last -------------------------------------------------------------------
