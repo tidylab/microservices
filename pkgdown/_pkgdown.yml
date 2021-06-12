@@ -19,14 +19,8 @@ articles:
 - title: "Background"
   contents:
   - articles/01-introduction
-- title: "Technologies"
+- title: "Basic Useage"
   contents:
   - articles/02-plumber
 
-
-# Functions ---------------------------------------------------------------
-reference:
-- title: plumber-based microservice
-  contents:
-  - matches("plumber")
 

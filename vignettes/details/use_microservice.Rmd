@@ -1,5 +1,5 @@
 ---
-title: "use_plumber_microservice"
+title: "use_microservice"
 editor_options: 
   markdown: 
     wrap: 80
@@ -8,7 +8,7 @@ editor_options:
 ```{r, include = FALSE}
 source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 file_fs <- system.file("inst", "configurations", "fs.yml", package = "microservices", mustWork = TRUE)
-info <- config::get("use_plumber_microservice", file=file_fs)
+info <- config::get("use_microservice", file=file_fs)
 microservice <- list(files = info$files, dependencies = as.data.frame(info$dependencies))
 ```
 
