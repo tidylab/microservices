@@ -6,6 +6,7 @@
 ^inst/snippets/
 ^renv/
 ^vignettes/
+^revdep/
 
 # Files
 ^\..*
@@ -25,6 +26,3 @@
 # pkgdown$
 ^docs$
 ^pkgdown$
-
-
-
