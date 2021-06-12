@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • Use Microservices in R</title>
+<title>Add a Service Route to the Microservice — add_service • Use Microservices in R</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,7 +52,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Add a Service Route to the Microservice — add_service" />
+<meta property="og:description" content="Expose additional set of services on a separate URL." />
 
 
 
@@ -71,7 +72,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -135,54 +136,97 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/tidylab/microservices/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Add a Service Route to the Microservice</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tidylab/microservices/blob/master/R/plumber-add_service.R'><code>R/plumber-add_service.R</code></a></small>
+    <div class="hidden name"><code>add_service.Rd</code></div>
     </div>
 
-    <div id="microservices-012" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.2">
-<a href="#microservices-012" class="anchor"></a>microservices 0.1.2<small> Unreleased </small>
-</h1>
-<ul>
-<li>Rename functions to be congruent with <code>tidylab</code> R packages collection</li>
-</ul>
-</div>
-    <div id="microservices-011" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.1">
-<a href="#microservices-011" class="anchor"></a>microservices 0.1.1<small> 2021-06-05 </small>
-</h1>
-<ul>
-<li>Added alias:
-<ul>
-<li>
-<code>use_plumber_microservice()</code> and <code><a href="../reference/use_microservice.html">use_microservice()</a></code> are synonyms</li>
-<li>
-<code>add_plumber_service()</code> and <code><a href="../reference/add_service.html">add_service()</a></code> are synonyms</li>
-</ul>
-</li>
-</ul>
-</div>
-    <div id="microservices-010" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#microservices-010" class="anchor"></a>microservices 0.1.0<small> 2021-03-03 </small>
-</h1>
-<ul>
-<li>New features:
-<ul>
-<li><code>use_plumber_microservice()</code></li>
-<li><code>add_plumber_service()</code></li>
-</ul>
-</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Expose additional set of services on a separate URL.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>add_service</span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, <span class='va'>name</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>path</th>
+      <td><p>(<code>character</code>) Where is the project root folder?</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>(<code>character</code>) what is the service route name? For example, if
+<code>name</code> = "repository" then the set of services would become available
+at <code>http://127.0.0.1:8080/repository/</code>.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite</th>
+      <td><p>(<code>logical</code>) Should existing destination files be overwritten?</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>No return value, called for side effects.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Lay the infrastructure for an additional set of services. That includes
+adding a unit test, adding an endpoint, and extending the entrypointy.
+<div class="alert alert-warning"></p>
+
+<p><strong>Note:</strong> <code>add_service</code> adds a service to pre-existing plumber
+microservice which you could deploy by calling <code>use_microservice</code>.
+</div></p>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>How It Works</h3>
+
+
+<p>Given a <code>path</code> (.) to a folder and a <code>name</code> (repository)</p>
+<p>When <code>add_service</code> is called</p>
+<p>Then the function creates the following files:<div class="r"></p><pre><span class='va'>tests</span><span class='op'>/</span><span class='va'>testthat</span><span class='op'>/</span><span class='va'>test</span><span class='op'>-</span><span class='va'>endpoint</span><span class='op'>-</span><span class='va'>plumber</span><span class='op'>-</span><span class='va'>repository.R</span>
+<span class='va'>inst</span><span class='op'>/</span><span class='va'>endpoints</span><span class='op'>/</span><span class='va'>plumber</span><span class='op'>-</span><span class='va'>repository.R</span>
+</pre><p></div></p>
+<p>And updates the following files:<div class="r"></p><pre><span class='va'>inst</span><span class='op'>/</span><span class='va'>entrypoints</span><span class='op'>/</span><span class='va'>plumber</span><span class='op'>-</span><span class='va'>foreground.R</span>
+</pre><p></div></p>
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>When to Use</h3>
+
+
+<p>In scenarios where services are thematically linked to each other.
+Examples for themes that should be mounted separately:</p><ul>
+<li><p>‘forecasting’ and ‘anomaly detection’</p></li>
+<li><p>‘user’ and ‘business’</p></li>
+</ul>
+
+
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other plumber microservice: 
+<code><a href='use_microservice.html'>use_microservice</a>()</code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>path</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/files2.html'>dir.create</a></span><span class='op'>(</span><span class='va'>path</span>, showWarnings <span class='op'>=</span> <span class='cn'>FALSE</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='use_microservice.html'>use_microservice</a></span><span class='op'>(</span><span class='va'>path</span><span class='op'>)</span>
+
+<span class='fu'>add_service</span><span class='op'>(</span><span class='va'>path</span>, name <span class='op'>=</span> <span class='st'>"repository"</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='va'>path</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "DESCRIPTION"                                      
+#&gt; [2] "inst/configurations/plumber.yml"                  
+#&gt; [3] "inst/endpoints/plumber-repository.R"              
+#&gt; [4] "inst/endpoints/plumber-utility.R"                 
+#&gt; [5] "inst/entrypoints/plumber-background.R"            
+#&gt; [6] "inst/entrypoints/plumber-foreground.R"            
+#&gt; [7] "tests/testthat/helpers-xyz.R"                     
+#&gt; [8] "tests/testthat/test-endpoint-plumber-repository.R"
+#&gt; [9] "tests/testthat/test-endpoint-plumber-utility.R"   </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

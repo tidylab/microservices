@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Setup Rudimentary Microservice • Use Microservices in R</title>
+<title>add_service • Use Microservices in R</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../../apple-touch-icon.png">
@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
 <script src="../../pkgdown.js"></script><!-- docsearch --><script src="../../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Setup Rudimentary Microservice">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="add_service">
 <meta property="og:description" content="microservices">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -87,42 +87,52 @@
 
       
 
-      </header><script src="setup-rudimentary-microservice_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="add_service_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Setup Rudimentary Microservice</h1>
+      <h1 data-toc-skip>add_service</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/tidylab/microservices/blob/master/vignettes/excerpts/setup-rudimentary-microservice.Rmd"><code>vignettes/excerpts/setup-rudimentary-microservice.Rmd</code></a></small>
-      <div class="hidden name"><code>setup-rudimentary-microservice.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/tidylab/microservices/blob/master/vignettes/details/add_service.Rmd"><code>vignettes/details/add_service.Rmd</code></a></small>
+      <div class="hidden name"><code>add_service.Rmd</code></div>
 
     </div>
 
     
     
-<ol style="list-style-type: decimal">
-<li>Deploy the Microservice infrastructure</li>
-</ol>
+<p>Lay the infrastructure for an additional set of services. That includes adding a unit test, adding an endpoint, and extending the entrypointy.</p>
+<div class="alert alert-warning">
+<p><strong>Note:</strong> <code>add_service</code> adds a service to pre-existing plumber microservice which you could deploy by calling <code>use_microservice</code>.</p>
+</div>
+<div id="how-it-works" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-it-works" class="anchor"></a>How It Works</h2>
+<p>Given a <code>path</code> (.) to a folder and a <code>name</code> (repository)</p>
+<p>When <code>add_service</code> is called</p>
+<p>Then the function creates the following files:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">microservices</span><span class="fu">::</span><span class="fu"><a href="../../reference/use_microservice.html">use_microservice</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_deps.html">install_deps</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/document.html">document</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Spin-up the microservice by running <code><a href="https://rdrr.io/r/base/source.html">source("./inst/entrypoints/plumber-background.R")</a></code></p></li>
-<li><p>Run the microservice unit-test by pressing Ctrl+Shift+T on Windows</p></li>
-</ol>
-<p>Congratulations! You have added a microservice to your application and tested that it works.</p>
-<!--
-## Further Reading
-
-* How to use the rudimentary microservice?
-* How to extend, that is customise, the rudimentary microservice?
--->
+<code class="sourceCode R"><span class="va">tests</span><span class="op">/</span><span class="va">testthat</span><span class="op">/</span><span class="va">test</span><span class="op">-</span><span class="va">endpoint</span><span class="op">-</span><span class="va">plumber</span><span class="op">-</span><span class="va">repository.R</span>
+<span class="va">inst</span><span class="op">/</span><span class="va">endpoints</span><span class="op">/</span><span class="va">plumber</span><span class="op">-</span><span class="va">repository.R</span></code></pre></div>
+<p>And updates the following files:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">inst</span><span class="op">/</span><span class="va">entrypoints</span><span class="op">/</span><span class="va">plumber</span><span class="op">-</span><span class="va">foreground.R</span></code></pre></div>
+</div>
+<div id="when-to-use" class="section level2">
+<h2 class="hasAnchor">
+<a href="#when-to-use" class="anchor"></a>When to Use</h2>
+<p>In scenarios where services are thematically linked to each other. Examples for themes that should be mounted separately:</p>
+<ul>
+<li>‘forecasting’ and ‘anomaly detection’</li>
+<li>‘user’ and ‘business’</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
