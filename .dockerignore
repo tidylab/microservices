@@ -4,6 +4,7 @@ cache/
 inst/docs/
 man/
 vignettes/_cache/
+revdep/
 
 # Files
 .*

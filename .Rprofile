@@ -134,7 +134,7 @@ assign(".Rprofile", new.env(), envir = globalenv())
     target_temporary <- tempfile()
 
     files <- list.files(getwd(), pattern = ".(R|r|yml)$", all.files = FALSE, recursive = TRUE)
-    files <- Filter(function(x) !grepl("vignettes|pkgdown|docs|snippets|codecov", x), files)
+    files <- Filter(function(x) !grepl("vignettes|pkgdown|docs|snippets|codecov|revdep", x), files)
     folders <- unique(dirname(files))
 
     suppressWarnings({

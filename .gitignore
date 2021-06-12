@@ -2,6 +2,7 @@
 docs/
 man/
 renv/
+revdep/
 *_cache/
 
 # Files
@@ -15,4 +16,3 @@ cran-comments.md
 *.png
 renv.lock
 docs
-
