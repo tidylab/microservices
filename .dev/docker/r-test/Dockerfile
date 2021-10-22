@@ -2,8 +2,6 @@
 FROM tidylab/microservice:4.1.1
 
 # Install Project Dependencies -------------------------------------------------
-RUN R -q -e "install_cran(c('plumber', 'httptest'), dependencies = 'Depends')"
-
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "install_deps(dependencies = 'Depends')"
 RUN R -q -e "install_deps(dependencies = 'Imports')"
