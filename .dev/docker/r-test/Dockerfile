@@ -1,5 +1,5 @@
 # R Package Development: Core --------------------------------------------------
-FROM tidylab/microservice:4.1.0
+FROM tidylab/microservice:4.1.1
 
 # Install Project Dependencies -------------------------------------------------
 RUN R -q -e "install_cran(c('plumber', 'httptest'), dependencies = 'Depends')"
