@@ -2,7 +2,6 @@
 ## plumber utility endpoint
 ################################################################################
 # Global code; gets executed at plumb() time.
-pkgload::load_all()
 plan <- purrr::partial(future::plan, workers = future::availableCores())
 if (future::supportsMulticore()) plan(future::multicore) else plan(future::multisession)
 
