@@ -3,9 +3,7 @@
 ## <https://www.rplumber.io/index.html>
 ################################################################################
 usethis::proj_set()
-
-if(!is.null(pkgload::pkg_ns())) pkgload::unload()
-pkgload::load_all()
+if(!is.null(pkgload::pkg_ns())) pkgload::load_code() else pkgload::load_all()
 
 plan <- purrr::partial(future::plan, workers = future::availableCores())
 if(future::supportsMulticore()) plan(future::multicore) else plan(future::multisession)

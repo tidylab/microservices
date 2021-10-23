@@ -2,6 +2,7 @@
 options(httptest.debug = FALSE)
 
 test_http <- function(desc, code){
+        withr::local_package("httptest")
         old_dir <- httptest::.mockPaths()[1]
         on.exit(httptest::.mockPaths(old_dir))
         httptest::.mockPaths("_api")

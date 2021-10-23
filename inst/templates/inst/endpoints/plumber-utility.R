@@ -1,11 +1,6 @@
 ################################################################################
 ## plumber utility endpoint
 ################################################################################
-# Global code; gets executed at plumb() time.
-plan <- purrr::partial(future::plan, workers = future::availableCores())
-if (future::supportsMulticore()) plan(future::multicore) else plan(future::multisession)
-
-
 # Utilities ---------------------------------------------------------------
 #* Health check
 #* Respond when you ask it if a service is available.
