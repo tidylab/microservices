@@ -31,11 +31,11 @@ RUN touch .Rprofile .Renviron
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
 RUN echo "require(remotes)" >> .Rprofile
-RUN R -q -e "remotes::update_packages()"
+RUN R -q -e "update_packages()"
 
-RUN R -q -e "install_cran(c('config', 'devtools', 'usethis'))"
+RUN R -q -e "install_cran(c('config', 'devtools', 'usethis', 'future'))"
 COPY ./DESCRIPTION ./DESCRIPTION
-RUN R -q -e "install_deps()"
+RUN R -q -e "install_deps(dependencies = TRUE)"
 
 COPY . ./app
 WORKDIR ./app
