@@ -16,9 +16,7 @@ assign(".Rprofile", new.env(), envir = globalenv())
 .Last <- function(){
     try(if(testthat::is_testing()) return())
     .Rprofile$utils$copy_package()
-
-    unlink("./renv", recursive = TRUE)
-    try(system('docker-compose down'), silent = TRUE)
+    try(system('docker-compose down', ignore.stdout = TRUE), silent = TRUE)
 }
 
 # Docker ------------------------------------------------------------------

@@ -1,0 +1,15 @@
+structure(list(url = "http://127.0.0.1:8080/utility/healthcheck", 
+    status_code = 404L, headers = structure(list(date = "Sun, 24 Oct 2021 00:40:03 GMT", 
+        `content-type` = "application/json", `content-length` = "36"), class = c("insensitive", 
+    "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1", 
+        headers = structure(list(date = "Sun, 24 Oct 2021 00:40:03 GMT", 
+            `content-type` = "application/json", `content-length` = "36"), class = c("insensitive", 
+        "list")))), cookies = structure(list(domain = logical(0), 
+        flag = logical(0), path = logical(0), secure = logical(0), 
+        expiration = structure(numeric(0), class = c("POSIXct", 
+        "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"), 
+    content = charToRaw("{\"error\":\"404 - Resource Not Found\"}"), 
+    date = structure(1635036003, class = c("POSIXct", "POSIXt"
+    ), tzone = "GMT"), times = c(redirect = 0, namelookup = 5.2e-05, 
+    connect = 0.000485, pretransfer = 0.000553, starttransfer = 0.044856, 
+    total = 0.044903)), class = "response")

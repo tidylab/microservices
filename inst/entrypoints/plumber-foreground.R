@@ -11,9 +11,15 @@ if(future::supportsMulticore()) plan(future::multicore) else plan(future::multis
 endpoint_path <- usethis::proj_path('inst', 'endpoints')
 config <- config::get(file = usethis::proj_path('inst', 'configurations', 'plumber.yml'))
 
+plumber::options_plumber(
+    docs.callback = NULL,
+    trailingSlash = TRUE,
+    methodNotAllowed = FALSE
+)
+
+
 root <- plumber::pr()
 root$mount('utility', plumber::Plumber$new(file.path(endpoint_path, 'plumber-utility.R')))
 root$mount('route_name', plumber::Plumber$new(file.path(endpoint_path, 'plumber-{route_name}.R')))
 
-root$setDocsCallback(NULL)
 root$run(host = config$host, port = config$port)

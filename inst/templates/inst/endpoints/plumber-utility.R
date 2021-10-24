@@ -5,9 +5,10 @@
 #* Health check
 #* Respond when you ask it if a service is available.
 #* @serializer unboxedJSON list(na = NULL)
-#* @get healthcheck
+#* @get healthcheck/
 function(){
     message("--> healthcheck: Request Received")
+    message("trailingSlash=", getOption("plumber.trailingSlash", FALSE))
     return(NULL)
 }
 
