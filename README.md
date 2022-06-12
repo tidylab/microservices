@@ -1,3 +1,4 @@
+
 # `microservices` <img src="https://raw.githubusercontent.com/tidylab/microservices/master/pkgdown/logo.png" align="right" height="50"/>
 
 <!-- badges: start -->
@@ -19,7 +20,7 @@ Breakdown a Monolithic Application to a Suite of Services
 ‘Microservice’ architectural style is an approach to developing a single
 application as a suite of small services, each running in its own
 process and communicating with lightweight mechanisms, often an ‘HTTP’
-resource ‘API.’ These services are built around business capabilities
+resource ‘API’. These services are built around business capabilities
 and independently deployable by fully automated deployment machinery.
 There is a bare minimum of centralized management of these services,
 which may be written in different programming languages and use
@@ -30,8 +31,12 @@ different data storage technologies.
 As a start, ask yourself if a microservice architecture is a good choice
 for the system you’re working on?
 
+<div class="alert alert-danger">
+
 **Caution:** If you do not plan to deploy a system into production, then
 you do not need microservices.
+
+</div>
 
 The microservice architecture entails costs and provides benefits.
 Making lots of independent parts work together incurs complexities.
@@ -133,13 +138,34 @@ effort.
 
 You can install `microservices` by using:
 
-    install.packages("microservices")
+``` r
+install.packages("microservices")
+```
 
 ## Further Reading
+
+-   [YouTube Video](https://www.youtube.com/watch?v=k3PuGGmA7Hg): KPMG
+    case study for implementing microservices in R (with
+    [`plumber`](https://www.rplumber.io/) and [RStudio
+    Connect](https://www.rstudio.com/products/connect/)).
+
+## Bibliography
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-Fowler2014" class="csl-entry">
 
 Fowler, Martin, and James Lewis. 2014. “<span
 class="nocase">Microservices - a definition of this new architectural
 term</span>.” <https://martinfowler.com/articles/microservices.html>.
 
+</div>
+
+<div id="ref-Newman2015" class="csl-entry">
+
 Newman, Sam. 2015. *<span class="nocase">Building microservices:
 designing fine-grained systems</span>*. O’Reilly Media, Inc.
+
+</div>
+
+</div>

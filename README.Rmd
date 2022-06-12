@@ -161,3 +161,8 @@ install.packages("microservices")
 ```
 
 ## Further Reading
+
+
+* [YouTube Video](https://www.youtube.com/watch?v=k3PuGGmA7Hg): KPMG case study for implementing microservices in R (with [`plumber`](https://www.rplumber.io/) and [RStudio Connect](https://www.rstudio.com/products/connect/)).
+
+## Bibliography

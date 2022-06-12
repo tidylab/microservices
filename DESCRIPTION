@@ -3,14 +3,11 @@ Package: microservices
 Title: Breakdown a Monolithic Application to a Suite of Services
 Version: 0.1.2
 Date: 2021-08-10
-Authors@R: 
-    c(person(given = "Harel",
-             family = "Lustiger",
-             role = c("aut", "cre"),
-             email = "tidylab@gmail.com",
-             comment = c(ORCID = "0000-0003-2953-9598")),
-      person(given = "Tidylab",
-             role = c("cph", "fnd")))
+Authors@R: c(
+    person("Harel", "Lustiger", , "tidylab@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-2953-9598")),
+    person("Tidylab", role = c("cph", "fnd"))
+  )
 Maintainer: Harel Lustiger <tidylab@gmail.com>
 Description: 'Microservice' architectural style is an approach to
     developing a single application as a suite of small services, each
@@ -21,7 +18,8 @@ Description: 'Microservice' architectural style is an approach to
     management of these services, which may be written in different
     programming languages and use different data storage technologies.
 License: MIT + file LICENSE
-URL: https://tidylab.github.io/microservices/, https://github.com/tidylab/microservices
+URL: https://tidylab.github.io/microservices/,
+    https://github.com/tidylab/microservices
 BugReports: https://github.com/tidylab/microservices/issues
 Depends: 
     R (>= 3.5)
