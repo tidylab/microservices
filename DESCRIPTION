@@ -21,7 +21,7 @@ Description: 'Microservice' architectural style is an approach to
     management of these services, which may be written in different
     programming languages and use different data storage technologies.
 License: MIT + file LICENSE
-URL: https://github.com/tidylab/microservices
+URL: https://tidylab.github.io/microservices/, https://github.com/tidylab/microservices
 BugReports: https://github.com/tidylab/microservices/issues
 Depends: 
     R (>= 3.5)

@@ -26,3 +26,4 @@
 # pkgdown$
 ^docs$
 ^pkgdown$
+^docker_boot\.service$

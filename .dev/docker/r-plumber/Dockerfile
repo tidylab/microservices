@@ -31,9 +31,12 @@ RUN touch .Rprofile .Renviron
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
 RUN echo "require(remotes)" >> .Rprofile
-RUN R -q -e "update_packages()"
 
-RUN R -q -e "install_cran(c('config', 'devtools', 'usethis', 'future'))"
+RUN R -q -e "update_packages()"
+RUN R -q -e "install_cran('devtools')"
+RUN R -q -e "install_cran('microservices', dependencies = TRUE)"
+
+
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "install_deps(dependencies = TRUE)"
 
