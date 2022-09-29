@@ -38,10 +38,10 @@ And updates the following files:
 ```{r, code = microservice$files$update, eval = FALSE, echo=TRUE}
 ```
 
-## When to Use 
+## When to Use
 
 In scenarios where services are thematically linked to each other. Examples for
 themes that should be mounted separately:
 
-* 'forecasting' and 'anomaly detection'
-* 'user' and 'business'
+-   'forecasting' and 'anomaly detection'
+-   'user' and 'business'

@@ -26,7 +26,7 @@ source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 status](https://www.r-pkg.org/badges/version/microservices)](https://CRAN.R-project.org/package=microservices)
 [![R build
 status](https://github.com/tidylab/microservices/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/microservices/actions)
-[![codecov](https://codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://codecov.io/gh/tidylab/microservices)
+[![codecov](https://app.codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://app.codecov.io/gh/tidylab/microservices)
 
 <!-- badges: end -->
 
