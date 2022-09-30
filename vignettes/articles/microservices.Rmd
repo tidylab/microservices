@@ -23,10 +23,8 @@ working out of the box.
 
 ## Workflow
 
-```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
+```{r child = "vignettes/excerpts/setup-rudimentary-microservice.Rmd"}
 ```
-
-
 
 ```{=html}
 <!--

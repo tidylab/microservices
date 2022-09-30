@@ -17,6 +17,7 @@ ARG R_PACKAGE_NAME=rproject
 COPY . ${R_USER}/${R_PACKAGE_NAME}
 RUN cp .Rprofile ${R_USER}/${R_PACKAGE_NAME}
 RUN cp .env ${R_USER}/.Renviron
+RUN echo "_R_CHECK_SYSTEM_CLOCK_=0" >> .Rprofile
 WORKDIR ${R_USER}/${R_PACKAGE_NAME}
 
 # Test-Suite -------------------------------------------------------------------
