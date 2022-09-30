@@ -64,7 +64,7 @@ warning("While `plumber` is single-threaded by nature, it is possible to perform
 
 ## Workflow
 
-```{r child = "vignettes/excerpts/setup-rudimentary-microservice.Rmd"}
+```{r child = "vignettes/excerpts/_setup-rudimentary-microservice.Rmd"}
 ```
 
 ## References
