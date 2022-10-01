@@ -1,6 +1,19 @@
+#' @noRd
+imports_field <- function() {
+    config::get
+    desc::desc
+    dplyr::filter
+    fs::path
+    glue::glue
+    purrr::walk
+    withr::with_options
+}
+
+# Negates -----------------------------------------------------------------
 file.does.not.exist <- Negate(base::file.exists)
 is.not.null <- Negate(base::is.null)
 
+# Helpers -----------------------------------------------------------------
 .utils <- new.env()
 
 .utils$get_description_obj <- function(path){

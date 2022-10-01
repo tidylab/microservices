@@ -9,7 +9,11 @@ suppressPackageStartupMessages(
 
 
 # global options ----------------------------------------------------------
-options(tidyverse.quiet = TRUE)
+options(
+    verbose = FALSE,
+    tidyverse.quiet = TRUE,
+    usethis.quiet = TRUE
+)
 
 
 # knitr -------------------------------------------------------------------
@@ -38,26 +42,26 @@ knitr::opts_chunk$set(
 
 knitr::knit_hooks$set(
     error = function(x, options) {
-        paste('\n\n<div class="alert alert-danger"><p>', (
+        paste('\n\n<div class="alert alert-danger">', (
             x
             |> stringr::str_replace_all('^#>\ Error in eval\\(expr, envir, enclos\\):', '**Caution:**')
             |> stringr::str_replace_all('#> ', '\n')
         ),
-        '</p></div>', sep = '\n')
+        '</div>', sep = '\n')
     },
     warning = function(x, options) {
-        paste('\n\n<div class="alert alert-warning"><p>', (
+        paste('\n\n<div class="alert alert-warning">', (
             x
             |> stringr::str_replace_all('##', '\n')
             |> stringr::str_replace_all('^#>\ Warning:', '**Note:**')
             |> stringr::str_remove_all("#>")
         ),
-        '</p></div>', sep = '\n')
+        '</div>', sep = '\n')
     },
     message = function(x, options) {
-        paste('\n\n<div class="alert alert-info"><p>',
+        paste('\n\n<div class="alert alert-info">',
               gsub('##|#>', '\n', paste("**Tip:**", x)),
-              '</p></div>', sep = '\n')
+              '</div>', sep = '\n')
     }
 )
 
