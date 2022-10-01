@@ -1,18 +1,34 @@
 ---
 title: "add_service"
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 80
 ---
 
-```{r, include = FALSE}
-source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```{r, include=FALSE, echo=FALSE, results='hide'}
+source(usethis::proj_path("vignettes", "_common.R"))
+
 path <<- "."
 name <<- "repository"
-file_fs <- system.file("inst", "configurations", "fs.yml", package = "microservices", mustWork = TRUE)
-info <- config::get("add_service", file=file_fs)
-microservice <- list(files = info$files, dependencies = as.data.frame(info$dependencies))
-microservice$files$add <- sapply(microservice$files$add, glue::glue, route_name = name)
+
+file_fs <- system.file(
+    "inst", "configurations", "fs.yml", 
+    package = "microservices", 
+    mustWork = TRUE
+)
+
+info <- config::get("add_service", file = file_fs)
+
+microservice <- list(
+    files = info$files, 
+    dependencies = as.data.frame(info$dependencies)
+)
+
+microservice$files$add <- purrr::walk(
+    microservice$files$add, 
+    glue::glue, 
+    route_name = name
+)
 ```
 
 Lay the infrastructure for an additional set of services. That includes adding a
@@ -24,18 +40,18 @@ warning("`add_service` adds a service to pre-existing plumber microservice which
 
 ## How It Works
 
-Given a `path` (`r path`) to a folder and a `name` (`r name`)
+Given a `path` to a folder and a service `name`
 
-When `add_service` is called
+When `add_service(path, name)` is called
 
 Then the function creates the following files:
 
-```{r, code = microservice$files$add, eval = FALSE, echo=TRUE}
+```{r, code=microservice$files$add, eval=FALSE, echo=TRUE}
 ```
 
 And updates the following files:
 
-```{r, code = microservice$files$update, eval = FALSE, echo=TRUE}
+```{r, code=microservice$files$update, eval=FALSE, echo=TRUE}
 ```
 
 ## When to Use

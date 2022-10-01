@@ -60,7 +60,7 @@ use_microservice <- function(path = ".", overwrite = FALSE){
 
 .use_microservice$add_dependencies <- function(path){
     file_fs <- system.file("configurations", "fs.yml", package = "microservices", mustWork = TRUE)
-    dependencies <- config::get("use_microservice", file = file_fs)$dependencies %>% as.data.frame()
+    dependencies <- config::get("use_microservice", file = file_fs)$dependencies |> as.data.frame()
 
     desc <- .utils$get_description_obj(path = path)
     desc$set_deps(dependencies)$write(file.path(path, "DESCRIPTION"))

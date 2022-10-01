@@ -101,7 +101,7 @@ wraps `demo$class_input` is a nameless function located under
 
 ```{r, eval=FALSE, echo = TRUE}
 function(x = NULL){
-    x <- x %>% jsonlite::fromJSON(flatten = TRUE)
+    x <- x |> jsonlite::fromJSON(flatten = TRUE)
     demo$class_input(x)
 }
 ```

@@ -22,3 +22,5 @@ PackageBuildArgs: --no-manual
 PackageBuildBinaryArgs: --no-manual
 PackageCheckArgs: --no-manual
 PackageRoxygenize: rd,collate,namespace,vignette
+
+UseNativePipeOperator: Yes

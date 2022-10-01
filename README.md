@@ -1,5 +1,5 @@
 
-# `microservices` <img src="https://raw.githubusercontent.com/tidylab/microservices/master/pkgdown/logo.png" align="right" height="50"/>
+# `microservices` <img src="https://raw.githubusercontent.com/tidylab/microservices/master/pkgdown/logo.png" align="right" style="float:right; height:75px"/>
 
 <!-- badges: start -->
 
@@ -7,7 +7,7 @@
 status](https://www.r-pkg.org/badges/version/microservices)](https://CRAN.R-project.org/package=microservices)
 [![R build
 status](https://github.com/tidylab/microservices/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/microservices/actions)
-[![codecov](https://app.codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://app.codecov.io/gh/tidylab/microservices)
+[![codecov](https://codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=ZLBYE2NIWF)](https://app.codecov.io/gh/tidylab/microservices)
 
 <!-- badges: end -->
 
@@ -33,12 +33,8 @@ for the system you’re working on?
 
 <div class="alert alert-danger">
 
-<p>
-
-**Caution:** If you do not plan to deploy a system into production, then
-you do not need microservices.
-
-</p>
+**Caution**: If you do not plan to deploy a system into production, then
+you do not need `microservices`.
 
 </div>
 
