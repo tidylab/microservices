@@ -1,0 +1,29 @@
+---
+title: "Setup Rudimentary Microservice"
+bibliography: []
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(usethis::proj_path("vignettes",  "_common.R"))
+```
+
+1.  Deploy the Microservice infrastructure
+
+```{r, eval=FALSE, echo=TRUE}
+microservices::use_microservice(path = ".")
+remotes::install_deps(dependencies = TRUE)
+devtools::document()
+```
+
+2.  Spin-up the microservice by running
+    `source("./inst/entrypoints/plumber-background.R")`
+
+3.  Run the microservice unit-test by pressing Ctrl+Shift+T on Windows
+
+Congratulations! You have added a microservice to your application and tested
+that it works.

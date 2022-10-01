@@ -6,7 +6,7 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+source(usethis::proj_path("vignettes",  "_common.R"))
 file_fs <- system.file("inst", "configurations", "fs.yml", package = "microservices", mustWork = TRUE)
 info <- config::get("use_microservice", file=file_fs)
 microservice <- list(files = info$files, dependencies = as.data.frame(info$dependencies))
@@ -64,10 +64,12 @@ warning("While `plumber` is single-threaded by nature, it is possible to perform
 
 ## Workflow
 
-```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
+```{r child = "vignettes/excerpts/_setup-rudimentary-microservice.Rmd"}
 ```
 
 ## References
 
-* [Parallel execution in plumber](https://blog.rstudio.com/2021/03/29/plumber-v1-1-0/#parallel-exec)
-* [`promises` package](https://rstudio.github.io/promises/articles/overview.html)
+-   [Parallel execution in
+    plumber](https://www.rstudio.com/blog/plumber-v1-1-0/#parallel-exec)
+-   [`promises`
+    package](https://rstudio.github.io/promises/articles/overview.html)

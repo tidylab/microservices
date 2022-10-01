@@ -18,7 +18,7 @@ editor_options:
 source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 ```
 
-# `microservices` <img src="https://raw.githubusercontent.com/tidylab/microservices/master/pkgdown/logo.png" align="right" height="50"/>
+# `microservices` <img src="https://raw.githubusercontent.com/tidylab/microservices/master/pkgdown/logo.png" align="right" style="float:right; height:75px"/>
 
 <!-- badges: start -->
 
@@ -26,7 +26,7 @@ source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 status](https://www.r-pkg.org/badges/version/microservices)](https://CRAN.R-project.org/package=microservices)
 [![R build
 status](https://github.com/tidylab/microservices/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/microservices/actions)
-[![codecov](https://codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://codecov.io/gh/tidylab/microservices)
+[![codecov](https://codecov.io/gh/tidylab/microservices/branch/master/graph/badge.svg?token=ZLBYE2NIWF)](https://app.codecov.io/gh/tidylab/microservices)
 
 <!-- badges: end -->
 
@@ -35,7 +35,6 @@ status](https://github.com/tidylab/microservices/workflows/R-CMD-check/badge.svg
 ```{r, echo = FALSE, out.width = "100%"}
 knitr::include_graphics("https://i.imgur.com/nZ5jw2g.png")
 ```
-
 
 ## Introduction
 
@@ -46,9 +45,10 @@ knitr::include_graphics("https://i.imgur.com/nZ5jw2g.png")
 As a start, ask yourself if a microservice architecture is a good choice for the
 system you're working on?
 
-```{r, error=TRUE}
-stop("If you do not plan to deploy a system into production, then you do not need microservices.")
-```
+::: {.alert .alert-danger}
+**Caution**: If you do not plan to deploy a system into production, then you do
+not need `microservices`.
+:::
 
 The microservice architecture entails costs and provides benefits. Making lots
 of independent parts work together incurs complexities. Management, maintenance,
@@ -162,7 +162,9 @@ install.packages("microservices")
 
 ## Further Reading
 
-
-* [YouTube Video](https://www.youtube.com/watch?v=k3PuGGmA7Hg): KPMG case study for implementing microservices in R (with [`plumber`](https://www.rplumber.io/) and [RStudio Connect](https://www.rstudio.com/products/connect/)).
+-   [YouTube Video](https://www.youtube.com/watch?v=k3PuGGmA7Hg): KPMG case
+    study for implementing microservices in R (with
+    [`plumber`](https://www.rplumber.io/) and [RStudio
+    Connect](https://www.rstudio.com/products/connect/)).
 
 ## Bibliography

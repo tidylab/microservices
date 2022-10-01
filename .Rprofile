@@ -7,7 +7,7 @@ assign(".Rprofile", new.env(), envir = globalenv())
     .Rprofile$utils$copy_package()
 
     # Package Management System
-    Date <- as.character(read.dcf("DESCRIPTION", "Date"));
+    Date <- as.character(read.dcf("DESCRIPTION", "Date"))
     URL <- if(is.na(Date)) "https://cran.rstudio.com/" else paste0("https://mran.microsoft.com/snapshot/", Date)
     options(repos = URL)
 }

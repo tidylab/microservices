@@ -18,6 +18,6 @@ function(){
 function(req){
     message("--> class: Request Received")
     json <- req$postBody
-    x <- json %>% jsonlite::fromJSON(flatten = TRUE)
+    x <- json |> jsonlite::fromJSON(flatten = TRUE)
     return(class(x))
 }
