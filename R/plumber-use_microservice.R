@@ -6,7 +6,10 @@
 #' @param path (`character`) Where is the project root folder?
 #' @param overwrite (`logical`) Should existing destination files be overwritten?
 #'
-#' @includeRmd vignettes/details/use_microservice.Rmd
+#' @details
+#' ```{r child = "vignettes/details/use_microservice.Rmd"}
+#' ````
+#'
 #' @return No return value, called for side effects.
 #' @family plumber microservice
 #' @export
@@ -60,7 +63,7 @@ use_microservice <- function(path = ".", overwrite = FALSE){
 
 .use_microservice$add_dependencies <- function(path){
     file_fs <- system.file("configurations", "fs.yml", package = "microservices", mustWork = TRUE)
-    dependencies <- config::get("use_microservice", file = file_fs)$dependencies %>% as.data.frame()
+    dependencies <- config::get("use_microservice", file = file_fs)$dependencies |> as.data.frame()
 
     desc <- .utils$get_description_obj(path = path)
     desc$set_deps(dependencies)$write(file.path(path, "DESCRIPTION"))

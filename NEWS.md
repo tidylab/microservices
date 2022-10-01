@@ -1,12 +1,11 @@
-<!--
 # microservices 0.2.0
 
 * Added support for multi-session
--->
+* Added support for running a microservice at launch on AWS
 
 # microservices 0.1.2
 
-* Rename functions to be congruent with `tidylab` R packages collection
+* Renamed functions to be congruent with `tidylab` R packages collection
 
 # microservices 0.1.1
 

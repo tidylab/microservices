@@ -13,7 +13,7 @@ extract_content_text <- purrr::partial(httr::content, as = "text", encoding = "U
 test_http("list_tables returns a vector with table names", {
     url <- modify_url(path = c("route_name", "list_tables"))
     expect_success_status(response <- httr::GET(url))
-    output <- extract_content_text(response) %>% jsonlite::fromJSON(flatten = TRUE)
+    output <- extract_content_text(response) |> jsonlite::fromJSON(flatten = TRUE)
     expect_type(output, "character")
     expect_true("mtcars" %in% output)
 })
@@ -24,7 +24,7 @@ test_http("read_table returns a data.frame", {
     url <- modify_url(path = c("route_name", "read_table"))
     # Query an existing table
     expect_success_status(response <- httr::GET(url, query = list(name = "mtcars")))
-    output <- extract_content_text(response) %>% jsonlite::fromJSON(flatten = TRUE)
+    output <- extract_content_text(response) |> jsonlite::fromJSON(flatten = TRUE)
     expect_s3_class(output, "data.frame")
 
 })
@@ -33,7 +33,7 @@ test_http("read_table returns an informative error message", {
     url <- modify_url(path = c("route_name", "read_table"))
     # Query a non-existing table
     expect_bad_request_status(response <- httr::GET(url, query = list(name = "xxx")))
-    output <- extract_content_text(response) %>% jsonlite::fromJSON(flatten = TRUE)
+    output <- extract_content_text(response) |> jsonlite::fromJSON(flatten = TRUE)
     expect_match(output$error, "should be one of")
 })
 
@@ -44,12 +44,12 @@ test_http("write_table copies a data.frame to the route_name", {
     body <- list(name = "zzz", value = datasets::sleep)
 
     expect_success_status(response <- httr::POST(url, body = body, encode = "json"))
-    output <- extract_content_text(response) %>% jsonlite::fromJSON(flatten = TRUE)
+    output <- extract_content_text(response) |> jsonlite::fromJSON(flatten = TRUE)
     expect_equivalent(output, list())
 
     url <- modify_url(path = c("route_name", "list_tables"))
     expect_success_status(response <- httr::GET(url))
-    output <- extract_content_text(response) %>% jsonlite::fromJSON(flatten = TRUE)
+    output <- extract_content_text(response) |> jsonlite::fromJSON(flatten = TRUE)
     expect_true("zzz" %in% output)
 })
 

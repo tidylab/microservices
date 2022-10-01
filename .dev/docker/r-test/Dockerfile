@@ -1,9 +1,7 @@
 # R Package Development: Core --------------------------------------------------
-FROM tidylab/microservice:4.1.0
+FROM tidylab/microservice:4.2.1
 
 # Install Project Dependencies -------------------------------------------------
-RUN R -q -e "install_cran(c('plumber', 'httptest'), dependencies = 'Depends')"
-
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "install_deps(dependencies = 'Depends')"
 RUN R -q -e "install_deps(dependencies = 'Imports')"
@@ -19,15 +17,14 @@ ARG R_PACKAGE_NAME=rproject
 COPY . ${R_USER}/${R_PACKAGE_NAME}
 RUN cp .Rprofile ${R_USER}/${R_PACKAGE_NAME}
 RUN cp .env ${R_USER}/.Renviron
+RUN echo "_R_CHECK_SYSTEM_CLOCK_=0" >> .Rprofile
 WORKDIR ${R_USER}/${R_PACKAGE_NAME}
 
 # Test-Suite -------------------------------------------------------------------
-RUN R -q -e "system.time(devtools::document())"
-RUN R -q -e "system.time(devtools::check(error_on = 'note'))"
-RUN R -q -e "system.time({\
-               devtools::load_all(export_all = FALSE, helpers = FALSE);\
-               testthat::test_dir('./tests/testthat', stop_on_failure = TRUE)\
-             })"
+RUN R -q -e "devtools::document()"
+RUN R -q -e "devtools::check(error_on = 'note')"
+RUN R -q -e "devtools::load_all(export_all = FALSE, helpers = FALSE);\
+             testthat::test_dir('./tests/testthat', stop_on_failure = TRUE)"
 
 # Teardown ---------------------------------------------------------------------
 ENTRYPOINT /bin/bash

@@ -14,19 +14,19 @@ services:
   # R Plumber
   ######################################################
   r-plumber:
-    image: plumber/microservices:1.0.0
+    image: microservice/plumber:1.0.0
     build:
       context: ./
       dockerfile: ./.dev/docker/r-plumber/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2021-05-18'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2021-08-10'
     container_name: r_plumber
     restart: always
     stdin_open: true
     tty: true
     ports:
       - 8080:8080
-version: "3.8"
+version: "3.3"
 # networks:
 #   default:
 #     name: r-package

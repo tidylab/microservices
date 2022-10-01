@@ -9,7 +9,7 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+source(usethis::proj_path("vignettes",  "_common.R"))
 ```
 
 ## Running Microservices with **plumber** API
@@ -76,7 +76,7 @@ pkgload::load_all()
 #* @param x Any R data structure.
 #* @get utility/class
 function(x = NULL){
-    x <- x %>% jsonlite::fromJSON(flatten = TRUE)
+    x <- x |> jsonlite::fromJSON(flatten = TRUE)
     demo$class_input(x)
 }
 ```
@@ -124,7 +124,7 @@ Send an object from R to the microservice with `jsonlite::toJSON`. For example,
 sending mtcars to `utility/mirror`:
 
 ```{r toJSON, eval = FALSE, echo=TRUE}
-input <- mtcars %>% tibble::rownames_to_column()
+input <- mtcars |> tibble::rownames_to_column()
 x <- jsonlite::toJSON(input, auto_unbox = TRUE)
 url <- URLencode(paste0("http://localhost:808/utility/mirror?x=", x))
 response <- httr::GET(url)
@@ -135,6 +135,6 @@ example, parsing the mtcars returning from `utility/mirror`:
 
 ```{r fromJSON, eval = FALSE, echo=TRUE}
 output <-
-  httr::content(response) %>%
+  httr::content(response) |>
   jsonlite::fromJSON()
 ```

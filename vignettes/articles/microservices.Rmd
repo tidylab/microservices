@@ -9,7 +9,7 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+source(usethis::proj_path("vignettes",  "_common.R"))
 ```
 
 ```{r internal-testing, eval=FALSE, include = FALSE}
@@ -23,10 +23,8 @@ working out of the box.
 
 ## Workflow
 
-```{r child = "../excerpts/setup-rudimentary-microservice.Rmd"}
+```{r child = "vignettes/excerpts/_setup-rudimentary-microservice.Rmd"}
 ```
-
-
 
 ```{=html}
 <!--
